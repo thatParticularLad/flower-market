@@ -10,7 +10,7 @@ function App() {
 			username: 'Ben Davidson',
 			image: 'sunflowers.jpg',
 			flower: 'Black Dafodil',
-			price: '20$',
+			price: 20,
 			description: 'a wonderful flower',
 		},
 		{
@@ -18,7 +18,7 @@ function App() {
 			username: 'David Henty',
 			image: 'sunflowers.jpg',
 			flower: 'Sunflower Van Gogh',
-			price: '10000$',
+			price: 10000,
 			description: 'a wonderful sunflower',
 		},
 	]);

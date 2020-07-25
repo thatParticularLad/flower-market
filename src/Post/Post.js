@@ -17,7 +17,7 @@ class Post extends Component {
 				</div>
 				<img className="post-image" src={post.image}></img>
 				<div className="description-container">
-					<p className="post-price">{post.price}</p>
+					<p className="post-price">{post.price + ' €'}</p>
 					<p className="post-flower">{post.flower}</p>
 					<p className="post-description">{post.description}</p>
 				</div>
