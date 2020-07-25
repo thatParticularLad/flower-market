@@ -1,0 +1,14 @@
+.posts {
+	margin: 0 auto;
+	margin-top: 5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+@media only screen and (min-width: 1300px) {
+	.posts {
+		width: 1280px;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}

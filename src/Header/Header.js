@@ -17,7 +17,7 @@ class Header extends React.Component {
 			<div class="navbar">
 				<div class="navbar-content">
 					<img className="logo" src="logo-flowers.svg" alt="image" />
-					<div class="search-fields">
+					<div className="search-fields">
 						<Autocomplete
 							className="flowerComboBox"
 							options={visosGeles}
