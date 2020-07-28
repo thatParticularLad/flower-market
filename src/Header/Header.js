@@ -2,6 +2,7 @@ import React from 'react';
 import { TextField, InputAdornment, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import SignupComboButton from '../Modals/SignupComboButton';
 import './Header.css';
 
 class Header extends React.Component {
@@ -14,8 +15,8 @@ class Header extends React.Component {
 		];
 
 		return (
-			<div class="navbar">
-				<div class="navbar-content">
+			<div className="navbar">
+				<div className="navbar-content">
 					<img className="logo" src="logo-flowers.svg" alt="image" />
 					<div className="search-fields">
 						<Autocomplete
@@ -46,9 +47,7 @@ class Header extends React.Component {
 						/>
 					</div>
 					<div>
-						<Button variant="outlined" color="primary">
-							Prisijungti | Registruotis
-						</Button>
+						<SignupComboButton />
 					</div>
 					<div>
 						<Button variant="contained" color="primary">

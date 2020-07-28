@@ -4,7 +4,7 @@ import './Post.css';
 
 class Post extends Component {
 	render() {
-		const post = this.props.post;
+		const post = this.props.post.post;
 		return (
 			<div className="post-container">
 				<div className="post-header">
@@ -15,7 +15,7 @@ class Post extends Component {
 					/>
 					<p>{post.username}</p>
 				</div>
-				<img className="post-image" src={post.image}></img>
+				<img className="post-image" src={post.image} alt={post.flower}></img>
 				<div className="description-container">
 					<p className="post-price">{post.price + ' €'}</p>
 					<p className="post-flower">{post.flower}</p>

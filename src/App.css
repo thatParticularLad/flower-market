@@ -1,8 +1,11 @@
 * {
 	margin: 0;
+	border-style: none;
+	outline: none;
 }
 body {
 	font-size: 1.3rem;
 	line-height: 1.25;
 	background-color: #fafafa;
+	/* -webkit-tap-highlight-color: transparent; */
 }

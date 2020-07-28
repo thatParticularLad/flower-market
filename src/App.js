@@ -1,27 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import './App.css';
 import Posts from './Posts/Posts';
+import { db } from './firebase';
 
 function App() {
-	const [posts, setPosts] = useState([
-		{
-			// avatar: 'duck1.jpg',
-			username: 'Ben Davidson',
-			image: 'sunflowers.jpg',
-			flower: 'Black Dafodil',
-			price: 20,
-			description: 'a wonderful flower',
-		},
-		{
-			// avatar: 'goose.jpg',
-			username: 'David Henty',
-			image: 'sunflowers.jpg',
-			flower: 'Sunflower Van Gogh',
-			price: 10000,
-			description: 'a wonderful sunflower',
-		},
-	]);
+	const [posts, setPosts] = useState([]);
+
+	// useEffect - runs a piece of code based on a specific condition (so an "if")
+	useEffect(() => {
+		// adds a listener (onSnapshot) on the database entity for posts
+		db.collection('posts').onSnapshot((snapshot) => {
+			// every time a new post is added, this code fires
+			// docs - all posts( because thats the collection we've chosen above)
+			setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })));
+		});
+	}, []);
 
 	return (
 		<div className="app">
