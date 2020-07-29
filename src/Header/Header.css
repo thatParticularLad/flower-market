@@ -1,0 +1,24 @@
+.navbar {
+	border-bottom: 0.5px solid rgba(125, 150, 100, 0.25);
+}
+.navbar-content {
+	padding: 1% 20px;
+	display: flex;
+	justify-content: center;
+}
+.navbar-content > * {
+	margin: 0 15px;
+}
+.search-fields {
+	display: flex;
+}
+
+.logo {
+	width: 40px;
+	height: auto;
+	margin-right: 50px;
+	object-fit: contain;
+}
+.flowerComboBox > * {
+	border-right: none !important;
+}

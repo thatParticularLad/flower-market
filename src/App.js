@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Header from './Header/Header';
 import './App.css';
+import Posts from './Posts/Posts';
+import { db } from './firebase';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [posts, setPosts] = useState([]);
+
+	// useEffect - runs a piece of code based on a specific condition (so an "if")
+	useEffect(() => {
+		// adds a listener (onSnapshot) on the database entity for posts
+		db.collection('posts').onSnapshot((snapshot) => {
+			// every time a new post is added, this code fires
+			// docs - all posts( because thats the collection we've chosen above)
+			setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })));
+		});
+	}, []);
+
+	return (
+		<div className="app">
+			<Header />
+			<Posts posts={posts} />
+			{/* Posts */}
+		</div>
+	);
 }
 
 export default App;
