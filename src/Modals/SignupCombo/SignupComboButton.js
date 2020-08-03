@@ -44,12 +44,24 @@ export default function SignupButton() {
 
 	const [open, setOpen] = React.useState(false);
 
+	const [isRegistering, setRegistering] = React.useState(false);
+
+	const [isLoggingIn, setLoggingIn] = React.useState(false);
+
 	const handleOpen = () => {
 		setOpen(true);
 	};
 
 	const handleClose = () => {
 		setOpen(false);
+	};
+	const startRegister = () => {
+		setRegistering(true);
+		setLoggingIn(false);
+	};
+	const startLogin = () => {
+		setRegistering(false);
+		setLoggingIn(true);
 	};
 
 	return (
@@ -89,8 +101,13 @@ export default function SignupButton() {
 							<button className="login-google-btn">Tęsti su Google</button>
 						</div>
 						<div className="login-register-buttons">
-							<button className="login-btn">Prisijungti</button>
-							<button className="register-btn"> Registruotis</button>
+							<button onClick={startLogin} className="login-btn">
+								Prisijungti
+							</button>
+							<button onClick={startRegister} className="register-btn">
+								{' '}
+								Registruotis
+							</button>
 						</div>
 					</div>
 				</Fade>

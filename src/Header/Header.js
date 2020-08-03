@@ -2,7 +2,9 @@ import React from 'react';
 import { TextField, InputAdornment, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import SignupComboButton from '../Modals/SignupComboButton';
+// import SignupComboButton from '../Modals/SignupCombo/SignupComboButton.js';
+import SignupButton from '../Modals/Signup/Signup.js';
+
 import './Header.css';
 
 class Header extends React.Component {
@@ -47,7 +49,7 @@ class Header extends React.Component {
 						/>
 					</div>
 					<div>
-						<SignupComboButton />
+						<SignupButton />
 					</div>
 					<div>
 						<Button variant="contained" color="primary">

@@ -1,0 +1,118 @@
+/* CONTINUE WITH GOOGLE AND FB */
+.login-buttons-column {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 20px;
+}
+.login-fb-btn,
+.login-google-btn {
+	width: 100%;
+	color: white;
+	border-radius: 5px;
+
+	padding: 10px 5px;
+	margin: 5px 0;
+	height: 44px;
+}
+.login-fb-btn:hover,
+.login-google-btn:hover {
+	cursor: pointer;
+}
+.login-fb-btn:hover {
+	background-color: #3f5e9e;
+	border-color: #3f5e9e;
+}
+.login-google-btn:hover {
+	background-color: #4788f5;
+	border-color: #4788f5;
+}
+.login-fb-btn {
+	background-color: #3b5998;
+	border-color: #3b5998;
+}
+.login-google-btn {
+	background: #4285f4;
+	border-color: #4285f4;
+}
+/* REGISTER AND LOGIN BUTTONS */
+.login-register-buttons {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.login-btn,
+.register-btn {
+	font-size: 16px;
+	color: #111;
+	background-color: transparent;
+	outline: none;
+	height: 44px;
+	width: 121px;
+}
+.login-btn:hover,
+.register-btn:hover {
+	color: rgb(44, 44, 44);
+	cursor: pointer;
+}
+/* CONTINUE WITH GOOGLE AND FB */
+.login-buttons-column {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 20px;
+}
+.login-fb-btn,
+.login-google-btn {
+	width: 100%;
+	color: white;
+	border-radius: 5px;
+
+	padding: 10px 5px;
+	margin: 5px 0;
+	height: 44px;
+}
+.login-fb-btn:hover,
+.login-google-btn:hover {
+	cursor: pointer;
+}
+.login-fb-btn:hover {
+	background-color: #3f5e9e;
+	border-color: #3f5e9e;
+}
+.login-google-btn:hover {
+	background-color: #4788f5;
+	border-color: #4788f5;
+}
+.login-fb-btn {
+	background-color: #3b5998;
+	border-color: #3b5998;
+}
+.login-google-btn {
+	background: #4285f4;
+	border-color: #4285f4;
+}
+/* REGISTER AND LOGIN BUTTONS */
+.login-register-buttons {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.login-btn,
+.register-btn {
+	font-size: 16px;
+	color: #111;
+	background-color: transparent;
+	outline: none;
+	height: 44px;
+	width: 121px;
+}
+.login-btn:hover,
+.register-btn:hover {
+	color: rgb(44, 44, 44);
+	cursor: pointer;
+}
