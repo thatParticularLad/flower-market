@@ -1,10 +1,10 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import { Fade, TextField } from '@material-ui/core';
-import SignUp from './SignUpForm';
+import { Fade } from '@material-ui/core';
+import SignIn from './SignInForm';
 
-export default function SignupButton() {
+export default function SignInButton() {
 	const [open, setOpen] = React.useState(false);
 
 	const handleOpen = () => {
@@ -15,12 +15,12 @@ export default function SignupButton() {
 		setOpen(false);
 	};
 
-	const signUp = (event) => {};
+	const signIp = (event) => {};
 
 	return (
 		<div>
 			<button type="button" onClick={handleOpen}>
-				Registruotis
+				Prisijungti
 			</button>
 			<Modal
 				disableAutoFocus={true}
@@ -37,7 +37,7 @@ export default function SignupButton() {
 				}}
 			>
 				<Fade in={open}>
-					<SignUp />
+					<SignIn />
 				</Fade>
 			</Modal>
 		</div>
