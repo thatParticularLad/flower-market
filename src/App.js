@@ -7,7 +7,7 @@ import { db } from './firebase';
 function App() {
 	const [posts, setPosts] = useState([]);
 
-	// useEffect - runs a piece of code based on a specific condition (so an "if")
+	// useEffect - runs a piece of code based on a specific condition (so a listener)
 	useEffect(() => {
 		// adds a listener (onSnapshot) on the database entity for posts
 		db.collection('posts').onSnapshot((snapshot) => {

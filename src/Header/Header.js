@@ -1,23 +1,19 @@
-import React, { useContext, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { TextField, InputAdornment, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 // import SignupComboButton from '../Modals/SignupCombo/SignupComboButton.js';
 import SignUpButton from '../Modals/SignUp/SignUp';
 import SignInButton from '../Modals/SignIn/SignIn';
-import { observer } from 'mobx-react';
-import { UserStoreContext } from '../stores/UserStore';
-import { auth } from '../firebase';
 import './Header.css';
 
-export const Header = observer(() => {
+function Header() {
 	//cia turetume gaut is backo
 	const visosGeles = [
 		{ title: 'Vazoninės gėlės' },
 		{ title: 'Dirbtinės gėlės' },
 		{ title: 'Kambarinės gėlės' },
 	];
-	const userStore = useContext(UserStoreContext);
 
 	return (
 		<div className="navbar">
@@ -52,20 +48,10 @@ export const Header = observer(() => {
 					/>
 				</div>
 				<div>
-					{/* //checks if we have a logged-in user */}
-					{userStore.user ? (
-						<div>
-							<h1>{`${userStore.firstname} ${userStore.lastname}`}</h1>
-							<button onClick={() => console.log(userStore.user.displayName)}>
-								Log out
-							</button>
-						</div>
-					) : (
-						<Fragment>
-							<SignUpButton />
-							<SignInButton />
-						</Fragment>
-					)}
+					<Fragment>
+						<SignUpButton />
+						<SignInButton />
+					</Fragment>
 				</div>
 				<div>
 					<Button variant="contained" color="primary">
@@ -75,6 +61,6 @@ export const Header = observer(() => {
 			</div>
 		</div>
 	);
-});
+}
 
 export default Header;

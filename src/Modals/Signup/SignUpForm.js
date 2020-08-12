@@ -9,7 +9,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { observer } from 'mobx-react';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const SignUpForm = observer(() => {
+function SignUpForm() {
 	const classes = useStyles();
 
 	const [firstname, setFirstname] = useState('');
@@ -157,5 +156,5 @@ export const SignUpForm = observer(() => {
 			</div>
 		</Container>
 	);
-});
+}
 export default SignUpForm;
