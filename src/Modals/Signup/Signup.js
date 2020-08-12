@@ -15,8 +15,6 @@ export default function SignupButton() {
 		setOpen(false);
 	};
 
-	const signUp = (event) => {};
-
 	return (
 		<div>
 			<button type="button" onClick={handleOpen}>
@@ -24,8 +22,6 @@ export default function SignupButton() {
 			</button>
 			<Modal
 				disableAutoFocus={true}
-				aria-labelledby="transition-modal-title"
-				aria-describedby="transition-modal-description"
 				// className={classes.modal}
 				open={open}
 				onClose={handleClose}
@@ -37,7 +33,9 @@ export default function SignupButton() {
 				}}
 			>
 				<Fade in={open}>
-					<SignUp />
+					<div>
+						<SignUp />
+					</div>
 				</Fade>
 			</Modal>
 		</div>

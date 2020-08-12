@@ -15,7 +15,7 @@ export default function SignInButton() {
 		setOpen(false);
 	};
 
-	const signIp = (event) => {};
+	const signUp = (event) => {};
 
 	return (
 		<div>

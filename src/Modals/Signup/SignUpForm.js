@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import { auth } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { observer } from 'mobx-react';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -35,8 +34,44 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignUp() {
+export const SignUpForm = observer(() => {
 	const classes = useStyles();
+
+	const [firstname, setFirstname] = useState('');
+	const [lastname, setLastname] = useState('');
+	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('');
+	const [user, setUser] = useState(null);
+
+	//Register user
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				//user has logged in
+				console.log(authUser);
+				setUser(authUser);
+			} else {
+				//user has logged out
+				setUser(null);
+			}
+		});
+		return () => {
+			unsubscribe();
+		};
+	}, [user, firstname, lastname]);
+
+	//Creates user in db
+	const signUp = (event) => {
+		event.preventDefault();
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then((authUser) => {
+				return authUser.user.updateProfile({
+					displayName: `${firstname} ${lastname}`,
+				});
+			})
+			.catch((error) => alert(error.message));
+	};
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -51,6 +86,8 @@ export default function SignUp() {
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}>
 							<TextField
+								value={firstname}
+								onChange={(e) => setFirstname(e.target.value)}
 								autoComplete="fname"
 								name="firstName"
 								variant="outlined"
@@ -58,11 +95,12 @@ export default function SignUp() {
 								fullWidth
 								id="firstName"
 								label="First Name"
-								autoFocus
 							/>
 						</Grid>
 						<Grid item xs={12} sm={6}>
 							<TextField
+								value={lastname}
+								onChange={(e) => setLastname(e.target.value)}
 								variant="outlined"
 								required
 								fullWidth
@@ -73,6 +111,8 @@ export default function SignUp() {
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								variant="outlined"
 								required
 								fullWidth
@@ -83,6 +123,8 @@ export default function SignUp() {
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
 								variant="outlined"
 								required
 								fullWidth
@@ -90,12 +132,7 @@ export default function SignUp() {
 								label="Password"
 								type="password"
 								id="password"
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<FormControlLabel
-								control={<Checkbox value="allowExtraEmails" color="primary" />}
-								label="I want to receive inspiration, marketing promotions and updates via email."
+								autoComplete={password}
 							/>
 						</Grid>
 					</Grid>
@@ -105,6 +142,7 @@ export default function SignUp() {
 						variant="contained"
 						color="primary"
 						className={classes.submit}
+						onClick={signUp}
 					>
 						Sign Up
 					</Button>
@@ -119,4 +157,5 @@ export default function SignUp() {
 			</div>
 		</Container>
 	);
-}
+});
+export default SignUpForm;

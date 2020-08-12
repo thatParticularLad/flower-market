@@ -21,7 +21,6 @@ function App() {
 		<div className="app">
 			<Header />
 			<Posts posts={posts} />
-			{/* Posts */}
 		</div>
 	);
 }
