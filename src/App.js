@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
-import SignInForm from './Modals/SignIn/SignInForm'
-import SignUpForm from './Modals/SignUp/SignUpForm'
+import SignInForm from './SignIn/SignInForm'
+import SignUpForm from './SignUp/SignUpForm'
+import NewPost from './NewPost/NewPost'
 import './App.css';
 import Posts from './Posts/Posts';
 import { db } from './firebase';
@@ -19,6 +20,7 @@ function App() {
 					<Route exact path="/" component={Home}/>
 					<Route path="/register" component={SignUpForm} />
 					<Route path="/login" component={SignInForm} />
+					<Route path="/new-post" component={NewPost} />
 				</Switch>
 				
 			</div>

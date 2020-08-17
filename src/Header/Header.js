@@ -59,9 +59,11 @@ function Header() {
 					</Fragment>
 				</div>
 				<div>
-					<Button variant="contained" color="primary">
-						Parduoti
-					</Button>
+					<Link to='/new-post'>
+						<Button variant="contained" color="primary">
+							Parduoti
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</div>
