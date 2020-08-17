@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
+import SignInForm from './Modals/SignIn/SignInForm'
+import SignUpForm from './Modals/SignUp/SignUpForm'
 import './App.css';
 import Posts from './Posts/Posts';
 import { db } from './firebase';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
+	
+
+	return (
+		<Router>
+			<div className="app">
+				<Header />
+				
+				<Switch>
+					<Route exact path="/" component={Home}/>
+					<Route path="/register" component={SignUpForm} />
+					<Route path="/login" component={SignInForm} />
+				</Switch>
+				
+			</div>
+		</Router>
+	);
+}
+
+function Home(){
 	const [posts, setPosts] = useState([]);
 
 	// useEffect - runs a piece of code based on a specific condition (so a listener)
@@ -16,13 +38,13 @@ function App() {
 			setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })));
 		});
 	}, []);
-
-	return (
-		<div className="app">
-			<Header />
-			<Posts posts={posts} />
-		</div>
-	);
-}
+	
+	return(
+	<div>
+		<Posts posts={posts}/>
+	</div>
+	)
+	
+};
 
 export default App;

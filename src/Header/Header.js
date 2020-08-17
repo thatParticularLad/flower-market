@@ -2,9 +2,8 @@ import React, { Fragment } from 'react';
 import { TextField, InputAdornment, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-// import SignupComboButton from '../Modals/SignupCombo/SignupComboButton.js';
-import SignUpButton from '../Modals/SignUp/SignUp';
-import SignInButton from '../Modals/SignIn/SignIn';
+
+import {Link} from 'react-router-dom'
 import './Header.css';
 
 function Header() {
@@ -18,7 +17,9 @@ function Header() {
 	return (
 		<div className="navbar">
 			<div className="navbar-content">
-				<img className="logo" src="logo-flowers.svg" alt="logo" />
+				<Link exact to='/'>
+					<img className="logo" src="logo-flowers.svg" alt="logo" />
+				</Link>
 				<div className="search-fields">
 					<Autocomplete
 						className="flowerComboBox"
@@ -49,8 +50,12 @@ function Header() {
 				</div>
 				<div>
 					<Fragment>
-						<SignUpButton />
-						<SignInButton />
+						<Link to='/register'>
+							<p>Register</p>
+						</Link>
+						<Link to='login'>
+							<p>Login</p>
+						</Link>
 					</Fragment>
 				</div>
 				<div>

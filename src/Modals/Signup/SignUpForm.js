@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function SignUpForm() {
+export default function SignUpForm() {
 	const classes = useStyles();
 
 	const [firstname, setFirstname] = useState('');
@@ -156,5 +156,6 @@ function SignUpForm() {
 			</div>
 		</Container>
 	);
-}
-export default SignUpForm;
+};
+
+	
