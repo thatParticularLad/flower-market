@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import SignInForm from './SignIn/SignInForm'
 import SignUpForm from './SignUp/SignUpForm'
 import NewPost from './NewPost/NewPost'
+import UserPost from './components/userpostComponent'
 import './App.css';
 import Posts from './Posts/Posts';
 import { db } from './firebase';
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/register" component={SignUpForm} />
 					<Route path="/login" component={SignInForm} />
 					<Route path="/new-post" component={NewPost} />
+					<Route path="/post/:postId" component={UserPost} />
 				</Switch>
 				
 			</div>
