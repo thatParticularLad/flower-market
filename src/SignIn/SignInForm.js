@@ -52,7 +52,12 @@ export default function SignInForm() {
 	})
 
 	const signIn = (event) => {
-		auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		event.preventDefault();
+		auth().signInWithEmailAndPassword(email, password)
+		.then(()=>{
+			console.log("hello")
+		})
+		.catch(function(error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
