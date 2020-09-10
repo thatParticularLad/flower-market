@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { auth } from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -35,8 +36,40 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignIn() {
+export default function SignInForm() {
 	const classes = useStyles();
+
+	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('');
+
+	auth().onAuthStateChanged((user) => {
+		if(user){
+			console.log(user);
+		}else{
+
+		}
+		
+	})
+
+	const signIn = (event) => {
+		auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			// ...
+		  });
+	}
+
+	const logOut = (event) => {
+		
+		auth().signOut().then(function() {
+			// Sign-out successful.
+		  }).catch(function(error) {
+			// An error happened.
+		  });
+	}
+
+
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -49,6 +82,8 @@ export default function SignIn() {
 				</Typography>
 				<form className={classes.form} noValidate>
 					<TextField
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						variant="outlined"
 						margin="normal"
 						required
@@ -60,15 +95,16 @@ export default function SignIn() {
 						autoFocus
 					/>
 					<TextField
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 						variant="outlined"
-						margin="normal"
 						required
 						fullWidth
 						name="password"
 						label="Password"
 						type="password"
 						id="password"
-						autoComplete="current-password"
+						autoComplete={password}
 					/>
 					<FormControlLabel
 						control={<Checkbox value="remember" color="primary" />}
@@ -80,8 +116,19 @@ export default function SignIn() {
 						variant="contained"
 						color="primary"
 						className={classes.submit}
+						onClick={signIn}
 					>
 						Sign In
+					</Button>
+					<Button
+						type="button"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.submit}
+						onClick={logOut}
+					>
+						Log Out Test
 					</Button>
 					<Grid container>
 						<Grid item xs>
